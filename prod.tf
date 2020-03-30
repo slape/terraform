@@ -1,15 +1,17 @@
 provider "aws" {
 	profile = "default"
-	region	= "us-west-1"
+	region	= "us-east-2"
 }
 
-resource "aws_s3_bucket" "tf_babble" {
-	bucket = "tf-course-babble"
+resource "aws_s3_bucket" "tf-babble-bucket" {
+	bucket = "tf-babble-bucket"
 	acl = "private"
 }
 
 resource "aws_default_vpc" "default" {
-
+	tags = {
+  	Name = "Default VPC"
+    }
 }
 
 resource "aws_security_group" "home-web" {
